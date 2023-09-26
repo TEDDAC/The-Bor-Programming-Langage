@@ -12,7 +12,19 @@ endif()
 project ("Bor Interpreter")
 
 # Ajoutez une source à l'exécutable de ce projet.
-add_executable (bor "bor.cpp" "bor.h")
+
+add_executable (bor)
+
+target_link_libraries(bor "treeSitter")
+
+target_sources(bor PUBLIC
+	"parser.c"
+	bor.cpp)
+
+add_subdirectory(tree_sitter)
+
+target_include_directories (bor PUBLIC "${CMAKE_SOURCE_DIR}/tree_sitter/")
+target_include_directories (bor PUBLIC "${CMAKE_BINARY_DIR}")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET bor PROPERTY CXX_STANDARD 20)
