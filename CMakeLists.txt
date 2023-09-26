@@ -19,7 +19,9 @@ target_link_libraries(bor "treeSitter")
 
 target_sources(bor PUBLIC
 	"parser.c"
-	bor.cpp)
+	bor.cpp  
+	"transformer.cpp"
+	"nodes/node.cpp")
 
 add_subdirectory(tree_sitter)
 
