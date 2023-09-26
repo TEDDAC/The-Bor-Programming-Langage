@@ -34,7 +34,14 @@ int main()
 	TSNode array_node = ts_node_named_child(root_node, 0);
 	TSNode number_node = ts_node_named_child(array_node, 0);
 
-	cout << "Hello World !" << endl;
+	// Print the syntax tree as an S-expression.
+	char* string = ts_node_string(root_node);
+	printf("Syntax tree: %s\n", string);
+
+	// Free all of the heap-allocated memory.
+	free(string);
+	ts_tree_delete(tree);
+	ts_parser_delete(parser);
 
 	return 0;
 }
