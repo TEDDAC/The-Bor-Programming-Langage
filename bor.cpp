@@ -10,7 +10,7 @@
 
 using namespace std;
 
-TSLanguage * tree_sitter_bor(void);
+extern "C" TSLanguage * tree_sitter_bor(void);
 
 int main()
 {
@@ -33,6 +33,8 @@ int main()
 	// Get some child nodes.
 	TSNode array_node = ts_node_named_child(root_node, 0);
 	TSNode number_node = ts_node_named_child(array_node, 0);
+
+	cout << "Hello World !" << endl;
 
 	return 0;
 }

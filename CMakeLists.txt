@@ -18,7 +18,7 @@ add_executable (bor)
 target_link_libraries(bor "treeSitter")
 
 target_sources(bor PUBLIC
-	parser.c
+	"parser.c"
 	bor.cpp)
 
 add_subdirectory(tree_sitter)
