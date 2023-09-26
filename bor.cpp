@@ -10,7 +10,7 @@
 
 using namespace std;
 
-TSLanguage * tree_sitter_bor();
+TSLanguage * tree_sitter_bor(void);
 
 int main()
 {
