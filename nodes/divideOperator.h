@@ -5,7 +5,7 @@
 
 class DivideOperator : public Operator {
 public:
-	DivideOperator(Node* left, Node* right);
-	Node* interpret(Context context) override;
+	DivideOperator(shared_ptr<Node> left, shared_ptr<Node> right);
+	shared_ptr<Node> interpret(Context context) override;
 	~DivideOperator();
 };

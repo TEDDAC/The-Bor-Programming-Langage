@@ -5,7 +5,7 @@
 
 class SubOperator : public Operator {
 public:
-	SubOperator(Node* left, Node* right);
-	Node* interpret(Context context) override;
+	SubOperator(shared_ptr<Node> left, shared_ptr<Node> right);
+	shared_ptr<Node> interpret(Context context) override;
 	~SubOperator();
 };

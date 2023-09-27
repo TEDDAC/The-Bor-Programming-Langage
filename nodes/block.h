@@ -7,10 +7,10 @@ using namespace std;
 
 class Block : public Node {
 private:
-	list<Node*> m_code;
+	list<shared_ptr<Node>> m_code;
 public:
-	Block(list<Node*> code);
+	Block(list<shared_ptr<Node>> code);
 	Block();
-	Node* interpret(Context context) override;
+	shared_ptr<Node> interpret(Context context) override;
 	~Block();
 };

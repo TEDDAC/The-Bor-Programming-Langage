@@ -1,7 +1,8 @@
 #pragma once
 
 #include "context.h"
+#include <memory>
 
 struct Node {
-	virtual Node* interpret(Context context) = 0;
+	virtual std::shared_ptr<Node> interpret(Context context) = 0;
 };

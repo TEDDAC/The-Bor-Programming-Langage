@@ -10,7 +10,7 @@ using namespace std;
 class Interpreter {
 private:
 	Context m_globalContext;
-	Node* m_rootNode;
+	shared_ptr<Node> m_rootNode;
 public:
 	Interpreter(const Context globalContext);
 	Interpreter();

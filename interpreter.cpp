@@ -5,7 +5,7 @@
 
 extern "C" TSLanguage * tree_sitter_bor(void);
 
-Interpreter::Interpreter(const Context globalContext) : m_globalContext(globalContext), m_rootNode(NULL){
+Interpreter::Interpreter(const Context globalContext) : m_globalContext(globalContext), m_rootNode(nullptr){
 
 }
 
@@ -46,5 +46,5 @@ void Interpreter::compile(const string code) {
 
 Interpreter::~Interpreter()
 {
-	delete m_rootNode;
+	
 }

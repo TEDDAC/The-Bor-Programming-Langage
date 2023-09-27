@@ -1,11 +1,11 @@
 #include "multiplyOperator.h"
 
-MultiplyOperator::MultiplyOperator(Node* left, Node* right) : Operator(left, right)
+MultiplyOperator::MultiplyOperator(shared_ptr<Node> left, shared_ptr<Node> right) : Operator(left, right)
 {
 
 }
 
-Node* MultiplyOperator::interpret(Context context)
+shared_ptr<Node> MultiplyOperator::interpret(Context context)
 {
 	return nullptr;
 }

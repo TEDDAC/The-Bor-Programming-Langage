@@ -5,7 +5,7 @@
 
 class AddOperator : public Operator {
 public:
-	AddOperator(Node* left, Node* right);
-	Node* interpret(Context context) override;
+	AddOperator(shared_ptr<Node> left, shared_ptr<Node> right);
+	shared_ptr<Node> interpret(Context context) override;
 	~AddOperator();
 };

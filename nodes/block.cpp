@@ -2,23 +2,22 @@
 #include <list>
 #include <algorithm>
 
-Block::Block(list<Node*> code) : m_code(code)
+Block::Block(list<shared_ptr<Node>> code) : m_code(code)
 {
 	
 }
 
-Block::Block(): Block(list<Node*>())
+Block::Block(): Block(list<shared_ptr<Node>>())
 {
 	
 }
 
-Node* Block::interpret(Context context)
+shared_ptr<Node> Block::interpret(Context context)
 {
 	return nullptr;
 }
 
 Block::~Block()
 {
-    auto destroy = [](Node* node) { delete node; };
-    std::for_each(m_code.begin(), m_code.end(), destroy);
+    
 }

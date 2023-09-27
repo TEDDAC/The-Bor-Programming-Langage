@@ -1,11 +1,11 @@
 #include "subOperator.h"
 
-SubOperator::SubOperator(Node* left, Node* right) : Operator(left, right)
+SubOperator::SubOperator(shared_ptr<Node> left, shared_ptr<Node> right) : Operator(left, right)
 {
 
 }
 
-Node* SubOperator::interpret(Context context)
+shared_ptr<Node> SubOperator::interpret(Context context)
 {
 	return nullptr;
 }

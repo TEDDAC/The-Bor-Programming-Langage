@@ -1,12 +1,15 @@
 #pragma once
 
 #include "node.h"
+#include <memory>
+
+using namespace std;
 
 struct Operator : public Node {
 private:
-	Node* m_left;
-	Node* m_right;
+	shared_ptr<Node> m_left;
+	shared_ptr<Node> m_right;
 public:
-	Operator(Node* left, Node* right);
+	Operator(shared_ptr<Node> left, shared_ptr<Node> right);
 	~Operator();
 };

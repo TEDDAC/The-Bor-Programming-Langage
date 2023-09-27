@@ -5,7 +5,7 @@
 
 class MultiplyOperator : public Operator {
 public:
-	MultiplyOperator(Node* left, Node* right);
-	Node* interpret(Context context) override;
+	MultiplyOperator(shared_ptr<Node> left, shared_ptr<Node> right);
+	shared_ptr<Node> interpret(Context context) override;
 	~MultiplyOperator();
 };

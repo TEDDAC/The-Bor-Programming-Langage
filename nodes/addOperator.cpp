@@ -1,11 +1,11 @@
 #include "addOperator.h"
 
-AddOperator::AddOperator(Node* left, Node* right) : Operator(left, right)
+AddOperator::AddOperator(shared_ptr<Node> left, shared_ptr<Node> right) : Operator(left, right)
 {
 
 }
 
-Node* AddOperator::interpret(Context context)
+shared_ptr<Node> AddOperator::interpret(Context context)
 {
 	return nullptr;
 }

@@ -1,11 +1,11 @@
 #include "divideOperator.h"
 
-DivideOperator::DivideOperator(Node* left, Node* right) : Operator(left, right)
+DivideOperator::DivideOperator(shared_ptr<Node> left, shared_ptr<Node> right) : Operator(left, right)
 {
 
 }
 
-Node* DivideOperator::interpret(Context context)
+shared_ptr<Node> DivideOperator::interpret(Context context)
 {
 	return nullptr;
 }
