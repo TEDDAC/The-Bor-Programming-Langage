@@ -21,5 +21,4 @@ Block::~Block()
 {
     auto destroy = [](Node* node) { delete node; };
     std::for_each(m_code.begin(), m_code.end(), destroy);
-	m_code.clear();
 }

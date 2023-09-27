@@ -16,7 +16,7 @@ Node* Transformer::transform(TSNode& tsnode) {
 		if (nodeType == string("binary_expression")) {
 			return createBinaryExpressionNode(tsnode);
 		} else if (nodeType == string("program")) {
-			return createBlocNode(tsnode);
+			return createBlockNode(tsnode);
 		}
 	}
 	return nullptr;
@@ -38,7 +38,7 @@ Node* Transformer::createBinaryExpressionNode(TSNode& tsnode) {
 		return new MultiplyOperator(left, right);
 }
 
-Node* Transformer::createBlocNode(TSNode& tsnode) {
+Node* Transformer::createBlockNode(TSNode& tsnode) {
 	list<Node*> code;
 	for (int i = 0; i < ts_node_child_count(tsnode); i++) {
 		TSNode child = ts_node_child(tsnode, i);
