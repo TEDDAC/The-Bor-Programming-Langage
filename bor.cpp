@@ -16,7 +16,7 @@ int main()
 {
 	Interpreter interpreter;
 
-	interpreter.compile("2 + a");
+	interpreter.compile("2 + a\n3 - b");
 
 	return 0;
 }

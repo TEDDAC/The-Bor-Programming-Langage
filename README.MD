@@ -29,8 +29,45 @@ classDiagram
     Context <.. Node
 
     class Node {
-        +Node interpret(Context context)
+        <<Abstract>>
+        +Node* interpret(Context context)
     }
+
+    class Identifier {
+        -String m_name
+    }
+
+    class FunctionCall {
+        -Node parameters[]
+    }
+
+    class NullValue
+
+    class Operator {
+        +Node m_left
+        +Node m_right
+    }
+    
+    class AddOperator
+    class SubOperator
+    class DivideOperator
+    class MultiplyOperator
+
+    class VariableDefinition {
+        +String m_name
+        +Node m_value
+    }
+
+    class VariableDeclaration {
+        +PrimitiveType m_type
+        %% Set variable to NullValue or the value passed
+    }
+
+    class ValueNode {
+        <<Abstract>>
+        +PrimitiveType m_type
+    }
+
 
     class Block
     class Function {
@@ -38,12 +75,24 @@ classDiagram
     }
 
     class ConditionnalBlock {
+        <<Abstract>>
         +Node condition
     }
 
     class WhileStatement
     class IfStatement
     class ForStatement
+
+    PrimitiveType <.. ValueNode
+
+    class PrimitiveType {
+        <<Enum>> 
+        String
+        Number
+        Bool
+        Null
+        Function
+    }
 
     class StringValue {
         -String m_value
@@ -63,44 +112,31 @@ classDiagram
         +bool value()
     }
 
-    class Identifier {
-        -String m_name
-
-        +String name
-    }
-
-
-    class FunctionCall {
-        -parameters[]
-    }
-
-    class NullValue
-    class NonTerminalExpression
-    class TerminalExpression
-    class AddOperator
-    class SubOperator
-    class DivideOperator
-    class MultiplyOperator
-
-    Node --o "code" Block
-    Block <|-- Function
+    Node "*" --* "code" Block
     Block <|-- ConditionnalBlock
     ConditionnalBlock <|-- IfStatement
     ConditionnalBlock <|-- WhileStatement
     WhileStatement <|-- ForStatement
+    ValueNode <|-- Function
+    Block <|-- Function
     
-    Node <|-- NonTerminalExpression
-    NonTerminalExpression <|-- Block
-    NonTerminalExpression <|-- AddOperator
-    NonTerminalExpression <|-- SubOperator
-    NonTerminalExpression <|-- MultiplyOperator
-    NonTerminalExpression <|-- DivideOperator
-    
-    Node <|-- TerminalExpression
-    TerminalExpression <|-- StringValue
-    TerminalExpression <|-- NumberValue
-    TerminalExpression <|-- BoolValue
-    TerminalExpression <|-- NullValue
-    TerminalExpression <|-- Identifier
+    Node <|-- Block
+
+    Node <|-- VariableDefinition
+    VariableDefinition <|-- VariableDeclaration
+
+    Node <|-- ValueNode
+    Node <|-- Identifier
+    ValueNode <|-- StringValue
+    ValueNode <|-- NumberValue
+    ValueNode <|-- BoolValue
+    ValueNode <|-- NullValue
     Identifier <|-- FunctionCall
+
+
+    Node <|-- Operator
+    Operator <|-- AddOperator
+    Operator <|-- SubOperator
+    Operator <|-- MultiplyOperator
+    Operator <|-- DivideOperator
 ```

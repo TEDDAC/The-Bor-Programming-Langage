@@ -10,6 +10,7 @@ Interpreter::Interpreter(const Context globalContext) : m_globalContext(globalCo
 }
 
 Interpreter::Interpreter() : Interpreter(Context()) {
+
 }
 
 void Interpreter::compile(const string code) {
@@ -33,10 +34,17 @@ void Interpreter::compile(const string code) {
 	char* string = ts_node_string(root_node);
 	printf("Syntax tree: %s\n", string);
 
-	Transformer::transform(root_node);
+	this->m_rootNode = Transformer::transform(root_node);
 
 	// Free all of the heap-allocated memory.
 	free(string);
 	ts_tree_delete(tree);
 	ts_parser_delete(parser);
+
+	return;
+}
+
+Interpreter::~Interpreter()
+{
+	delete m_rootNode;
 }

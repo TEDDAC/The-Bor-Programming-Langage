@@ -23,7 +23,8 @@ target_sources(bor PUBLIC
 	"transformer.cpp"
 	"nodes/node.cpp" 
 	"context.cpp" 
-	"interpreter.cpp")
+	"interpreter.cpp"
+	"nodes/block.cpp")
 
 add_subdirectory(tree_sitter)
 
