@@ -2,6 +2,6 @@
 
 #include "context.h"
 
-class Node {
+struct Node {
 	virtual Node* interpret(Context context) = 0;
 };

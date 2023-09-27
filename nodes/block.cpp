@@ -14,7 +14,7 @@ Block::Block(): Block(list<Node*>())
 
 Node* Block::interpret(Context context)
 {
-	return new Block();
+	return nullptr;
 }
 
 Block::~Block()

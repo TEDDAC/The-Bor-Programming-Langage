@@ -16,7 +16,7 @@ int main()
 {
 	Interpreter interpreter;
 
-	interpreter.compile("2 + a\n3 - b");
+	interpreter.compile("2 + a\n3 - b\n18 / 5\n3 * 4");
 
 	return 0;
 }
