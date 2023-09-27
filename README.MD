@@ -10,7 +10,7 @@ This is just a language because I want to learn how to create my own.
 - Functions can be stored in variables
 - Everything is true except 0 or Null
 - Get variable is ascendant, if we can get a variable in the current context, we get it from above
-- 
+- During compilation, node of function or put in global context
 
 ## Class Diagram
 
@@ -78,7 +78,7 @@ classDiagram
     class NonTerminalExpression
     class TerminalExpression
     class AddOperator
-    class MoinsOperator
+    class SubOperator
     class DivideOperator
     class MultiplyOperator
 
@@ -92,7 +92,7 @@ classDiagram
     Node <|-- NonTerminalExpression
     NonTerminalExpression <|-- Block
     NonTerminalExpression <|-- AddOperator
-    NonTerminalExpression <|-- MoinsOperator
+    NonTerminalExpression <|-- SubOperator
     NonTerminalExpression <|-- MultiplyOperator
     NonTerminalExpression <|-- DivideOperator
     

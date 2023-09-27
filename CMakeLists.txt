@@ -21,7 +21,9 @@ target_sources(bor PUBLIC
 	"parser.c"
 	bor.cpp  
 	"transformer.cpp"
-	"nodes/node.cpp")
+	"nodes/node.cpp" 
+	"context.cpp" 
+	"interpreter.cpp")
 
 add_subdirectory(tree_sitter)
 
