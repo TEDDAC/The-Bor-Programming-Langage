@@ -12,44 +12,45 @@ This is just a language because I want to learn how to create my own.
 - Get variable is ascendant, if we can get a variable in the current context, we get it from above
 - During compilation, node of function are put in global context
 - Number are float
+- Import is interpreted. File imported is compile at the runtime.
 
 ## Grammar
 
 
 ```
-PROGRAM -> BLOCK
-INSTRUCTION -> E\n | FUNCTION_DEFINITION\n | E\nINSTRUCTION | FUNCTION_DEFINITION\nINSTRUCTION
+PROGRAM -> INSTRUCTION
+INSTRUCTION -> E\n | FUNCTION_DEFINITION\n | E\nINSTRUCTION | FUNCTION_DEFINITION\nINSTRUCTION | STATEMENT\n | STATEMENT\nINSTRUCTION | BLOCK
+BLOCK -> { INSTRUCTION }
 
 VARIABLE_DECLARATION -> PRIMITIVE_TYPE VARIABLE_DEFINITION | PRIMITIVE ID
 VARIABLE_DEFINITION -> ID = E
 
 FUNCTION_DECLARATION -> PRIMITIVE_TYPE ID(PARAMS_PROTOTYPE) BLOCK
 PARAMS_PROTOTYPE -> PRIMITIVE_TYPE | PRIMITIVE_TYPE, PARAMS_PROTOTYPE
-BLOCK -> { INSTRUCTION }
 
 // Operators
-E -> T + MATH_EXP | T - MATH_EXP | T | - T | + T | BOOL
+E -> T + E | T - E | T | - T | + T | BOOL_EXP
 T -> F* T | F / T | F
-F -> NUMBER | ID | FUNCTION_CALL | (MATH_EXP) | undefined | LITERAL
-
-
-// Compare Operators
-DIFF -> E != E
-EQ -> E == E
-LO -> MATH_EXP < MATH_EXP
-LE -> MATH_EXP <= MATH_EXP
-GE -> MATH_EXP >= MATH_EXP
-GR -> MATH_EXP > MATH_EXP
-
-// Increment and Decrement Operators
-INC -> NUMBER += NUMBER
-DEC -> NUMBER -= NUMBER
+F -> NUMBER | ID | FUNCTION_CALL | (E) | undefined | LITERAL
 
 //Boolean Operators
-BOOL_EXP -> AND | OR | NOT
-AND -> BOOL && BOOL
-OR -> BOOL || BOOL
-NOT -> !BOOL
+BOOL_EXP -> OR
+OR -> AND || OR | AND | COMPARE_OPERATOR || OR
+AND -> NOT && AND | NOT
+NOT -> !BOOL | (BOOL_EXP) | BOOL | epsilon
+
+// Compare Operators
+COMPARE_OPERATOR -> DIFF | EQ | LO | LE | GE | GR
+DIFF -> E != E
+EQ -> E == E
+LO -> E < E
+LE -> E <= E
+GE -> E >= E
+GR -> E > E
+
+// Increment and Decrement Operators
+INC -> ID += NUMBER
+DEC -> ID -= NUMBER
 
 FUNCTION_CALL -> ID(PARAMS)
 PARAMS -> E | E, PARAMS
@@ -57,7 +58,8 @@ PARAMS -> E | E, PARAMS
 ID -> [a-zA-Z0-9_-]*[a-zA-Z_]+[a-zA-Z0-9_]*
 
 // Statement
-// if
+STATEMENT -> IF | WHILE | FOR
+IF -> if(E) BLOCK
 // while
 // for
 
